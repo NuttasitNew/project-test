@@ -69,4 +69,13 @@ export class TasksService {
 
     return updateTask;
   }
+
+  deleteTaskById(id: string): Task {
+    const leftOverTasks = tasks.filter((task) => task.id !== id);
+    const deleteTask = tasks.find((task) => task.id === id);
+    tasks.length = 0;
+    tasks.push(...leftOverTasks);
+
+    return deleteTask;
+  }
 }
